@@ -18,12 +18,8 @@ const App = () => {
 
   const dogData = useSelector((state) => state.dogs.value);
 
-  console.log(dogData);
-
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
-
-    console.log(source);
 
     if (!destination) {
       return;

@@ -30,8 +30,6 @@ const selectDogs = (data, numberOfColumns) => {
     };
   }
 
-  console.log(dogData);
-
   return dogData;
 };
 export default selectDogs;
