@@ -17,7 +17,6 @@ const App = () => {
 
   const allDogs = useSelector((state) => state.dogs.value);
 
-  // console.log(allDogs);
   if (allDogs.length > 0) {
     return (
       <div className="App">

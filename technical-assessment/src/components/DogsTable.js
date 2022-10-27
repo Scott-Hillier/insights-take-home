@@ -4,9 +4,13 @@ const DogsTable = () => {
   const allDogs = useSelector((state) => state.dogs.value);
 
   return (
-    <div>
+    <div className="table">
       {allDogs.map((dog, i) => {
-        return <h3 key={i}>{dog}</h3>;
+        return (
+          <div className="dog" key={i}>
+            {dog}
+          </div>
+        );
       })}
       {/* <table className="table">
         <thead></thead>

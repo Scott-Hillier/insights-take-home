@@ -9,6 +9,11 @@ const sortDogs = (data) => {
       dogs.push(dog);
     }
   }
-  return dogs;
+
+  const randomDogs = dogs.sort(function (a, b) {
+    return 0.5 - Math.random();
+  });
+
+  return randomDogs;
 };
 export default sortDogs;
