@@ -2,11 +2,11 @@ import "./App.css";
 import DogsTable from "./components/DogsTable";
 import axios from "axios";
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setDogs } from "./features/dogs";
+import { useDispatch, useSelector } from "react-redux";
+import { setDogs, getDogs } from "./features/dogs";
 import sortDogs from "./logic/sortDogs";
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,12 +15,17 @@ function App() {
     });
   }, []);
 
-  return (
-    <div className="App">
-      <h1>Insights.GG Test</h1>
-      <DogsTable />
-    </div>
-  );
-}
+  const allDogs = useSelector((state) => state.dogs.value);
+
+  // console.log(allDogs);
+  if (allDogs.length > 0) {
+    return (
+      <div className="App">
+        <h1>Insights.GG Test</h1>
+        <DogsTable />
+      </div>
+    );
+  }
+};
 
 export default App;
