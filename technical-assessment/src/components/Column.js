@@ -6,8 +6,8 @@ const Column = ({ dogs, column }) => {
   return (
     <section className="table">
       <div className="header">
-        <h2>Rank</h2>
-        <h2>Breed</h2>
+        <h3 className="rank">Rank</h3>
+        <h3 className="breed">Breed</h3>
       </div>
       <Droppable droppableId={column.id}>
         {(provided) => {
