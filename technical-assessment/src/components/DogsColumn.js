@@ -1,21 +1,15 @@
-import { useSelector } from "react-redux";
+import { Draggable } from "react-beautiful-dnd";
 
-const DogsColumn = () => {
-  const allDogs = useSelector((state) => state.dogs.value);
-
+const DogsColumn = ({ dogs }) => {
   return (
     <div className="table">
-      {allDogs.map((dog, i) => {
+      {dogs.map((dog) => {
         return (
-          <div className="dog" key={i}>
-            {dog}
-          </div>
+          <Draggable>
+            <div className="dog">{dog}</div>;
+          </Draggable>
         );
       })}
-      {/* <table className="table">
-        <thead></thead>
-        <tbody></tbody>
-      </table> */}
     </div>
   );
 };

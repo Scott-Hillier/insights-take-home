@@ -1,14 +1,9 @@
 const selectDogs = (data, numberOfColumns) => {
   const dogs = [];
   const dogColumns = [];
+
   for (const dog in data) {
-    if (data[dog].length > 0) {
-      data[dog].map((variation) => {
-        dogs.push(`${variation} ${dog}`);
-      });
-    } else {
-      dogs.push(dog);
-    }
+    dogs.push(dog);
   }
 
   const randomDogs = dogs.sort(function (a, b) {
@@ -18,6 +13,14 @@ const selectDogs = (data, numberOfColumns) => {
   for (let i = 0; i < numberOfColumns; i++) {
     dogColumns.push(randomDogs.splice(0, 10));
   }
+
+  // for (let i = 0; i < 20; i++) {
+  //   if (i < 10) {
+  //     dogData.dogBreeds.breed1Rank[`rank${i + 1}`] = randomDogs[i];
+  //   } else {
+  //     dogData.dogBreeds.breed2Rank[`rank${i - 9}`] = randomDogs[i - 10];
+  //   }
+  // }
 
   console.log(dogColumns);
 
