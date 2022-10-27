@@ -3,14 +3,14 @@ import { Draggable } from "react-beautiful-dnd";
 
 const Dog = ({ dog, index }) => {
   return (
-    <Draggable draggableId={dog.id} index={index}>
+    <Draggable draggableId={dog.id} index={index} type="TASK">
       {(provided) => {
         // console.log(provided.draggableProps);
         return (
           <div
             className="dog"
             ref={provided.innerRef}
-            {...provided.dragHandleProps}
+            {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
             {dog.name}
