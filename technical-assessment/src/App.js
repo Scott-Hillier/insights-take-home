@@ -1,9 +1,9 @@
 import "./App.css";
-import DogsColumn from "./components/DogsColumn";
+import Column from "./components/Column";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setDogColumns } from "./features/dogs";
+import { setDogData } from "./features/dogs";
 import selectDogs from "./logic/selectDogs";
 import { DragDropContext } from "react-beautiful-dnd";
 
@@ -12,26 +12,43 @@ const App = () => {
 
   useEffect(() => {
     axios.get("https://dog.ceo/api/breeds/list/all").then((response) => {
-      dispatch(setDogColumns(selectDogs(response.data.message, 2)));
+      dispatch(setDogData(selectDogs(response.data.message, 2)));
     });
-  }, []);
+  }, [dispatch]);
 
-  const dogColumns = useSelector((state) => state.dogs.value);
+  const dogData = useSelector((state) => state.dogs.value);
+
+  console.log(dogData);
 
   const onDragEnd = (result) => {
-    // reorder column
+    const { destination, source, draggableId } = result;
+
+    if (!destination) {
+      return;
+    }
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    const column = dogData[source.droppableId];
   };
 
-  if (dogColumns) {
+  if (dogData.dogs) {
     return (
       <div className="App">
         <h1>Insights.GG Test</h1>
         <section className="tables">
           <DragDropContext onDragEnd={onDragEnd}>
-            {dogColumns.map((column, index) => {
-              return (
-                <DogsColumn dogs={column.dogs} column={column} key={index} />
-              );
+            {dogData.columnOrder.map((columnId, index) => {
+              const column = dogData.columns[columnId];
+              const dogs = column.dogIds.map((dogId) => {
+                return dogData.dogs[dogId];
+              });
+              return <Column dogs={dogs} column={column} key={column.id} />;
             })}
           </DragDropContext>
         </section>

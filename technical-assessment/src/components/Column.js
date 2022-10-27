@@ -2,7 +2,7 @@ import React from "react";
 import Dog from "./Dog";
 import { Droppable } from "react-beautiful-dnd";
 
-const DogsColumn = ({ dogs, column }) => {
+const Column = ({ dogs, column }) => {
   return (
     <div className="table">
       <h1>Table Header</h1>
@@ -26,4 +26,4 @@ const DogsColumn = ({ dogs, column }) => {
   );
 };
 
-export default DogsColumn;
+export default Column;

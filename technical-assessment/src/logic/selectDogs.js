@@ -1,7 +1,11 @@
 const selectDogs = (data, numberOfColumns) => {
+  const dogData = {
+    dogs: {},
+    columns: {},
+    columnOrder: ["column-1", "column-2"],
+  };
   const dogs = [];
-  const dogColumns = [];
-  const selectedDogObjects = [];
+  const IDs = [];
 
   for (const dog in data) {
     dogs.push(dog);
@@ -14,16 +18,20 @@ const selectDogs = (data, numberOfColumns) => {
   const selectedDogs = randomDogs.splice(0, 20);
 
   selectedDogs.map((dog, index) => {
-    selectedDogObjects.push({ id: `dog-${index + 1}`, name: dog });
+    dogData.dogs[`dog-${index + 1}`] = { id: `dog-${index + 1}`, name: dog };
+    IDs.push(`dog-${index + 1}`);
   });
 
   for (let i = 1; i <= numberOfColumns; i++) {
-    dogColumns.push({
+    dogData.columns[`column-${i}`] = {
       id: `column-${i}`,
-      dogs: selectedDogObjects.splice(0, 10),
-    });
+      title: `Table-${i}`,
+      dogIds: IDs.splice(0, 10),
+    };
   }
 
-  return dogColumns;
+  console.log(dogData);
+
+  return dogData;
 };
 export default selectDogs;

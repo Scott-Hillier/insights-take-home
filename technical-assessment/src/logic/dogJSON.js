@@ -1,5 +1,5 @@
-const dogData = (dogColumns) => {
-  const dogData = {
+const dogJSON = (dogColumns) => {
+  const dogJSON = {
     dogBreeds: {
       breed1Total: 10,
       breed1Rank: {},
@@ -11,4 +11,4 @@ const dogData = (dogColumns) => {
   console.log(dogData);
 };
 
-export default dogData;
+export default dogJSON;

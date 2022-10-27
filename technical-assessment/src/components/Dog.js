@@ -5,7 +5,6 @@ const Dog = ({ dog, index }) => {
   return (
     <Draggable draggableId={dog.id} index={index} type="TASK">
       {(provided) => {
-        // console.log(provided.draggableProps);
         return (
           <div
             className="dog"
