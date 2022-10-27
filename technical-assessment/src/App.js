@@ -23,6 +23,8 @@ const App = () => {
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
 
+    console.log(source);
+
     if (!destination) {
       return;
     }
@@ -34,7 +36,25 @@ const App = () => {
       return;
     }
 
-    const column = dogData[source.droppableId];
+    const column = dogData.columns[source.droppableId];
+    const newDogIds = Array.from(column.dogIds);
+    newDogIds.splice(source.index, 1);
+    newDogIds.splice(destination.index, 0, draggableId);
+
+    const newColumn = {
+      ...column,
+      dogIds: newDogIds,
+    };
+
+    const newDogData = {
+      ...dogData,
+      columns: {
+        ...dogData.columns,
+        [newColumn.id]: newColumn,
+      },
+    };
+
+    dispatch(setDogData(newDogData));
   };
 
   if (dogData.dogs) {
