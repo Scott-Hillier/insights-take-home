@@ -1,6 +1,7 @@
 const selectDogs = (data, numberOfColumns) => {
   const dogs = [];
   const dogColumns = [];
+  const selectedDogObjects = [];
 
   for (const dog in data) {
     dogs.push(dog);
@@ -10,17 +11,18 @@ const selectDogs = (data, numberOfColumns) => {
     return 0.5 - Math.random();
   });
 
-  for (let i = 0; i < numberOfColumns; i++) {
-    dogColumns.push(randomDogs.splice(0, 10));
-  }
+  const selectedDogs = randomDogs.splice(0, 20);
 
-  // for (let i = 0; i < 20; i++) {
-  //   if (i < 10) {
-  //     dogData.dogBreeds.breed1Rank[`rank${i + 1}`] = randomDogs[i];
-  //   } else {
-  //     dogData.dogBreeds.breed2Rank[`rank${i - 9}`] = randomDogs[i - 10];
-  //   }
-  // }
+  selectedDogs.map((dog, index) => {
+    selectedDogObjects.push({ id: `dog-${index + 1}`, name: dog });
+  });
+
+  for (let i = 1; i <= numberOfColumns; i++) {
+    dogColumns.push({
+      id: `column-${i}`,
+      dogs: selectedDogObjects.splice(0, 10),
+    });
+  }
 
   return dogColumns;
 };

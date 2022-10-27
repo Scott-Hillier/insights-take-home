@@ -29,7 +29,9 @@ const App = () => {
         <section className="tables">
           <DragDropContext onDragEnd={onDragEnd}>
             {dogColumns.map((column, index) => {
-              return <DogsColumn dogs={column} key={index} />;
+              return (
+                <DogsColumn dogs={column.dogs} column={column} key={index} />
+              );
             })}
           </DragDropContext>
         </section>
