@@ -1,5 +1,6 @@
-const sortDogs = (data) => {
+const selectDogs = (data, numberOfColumns) => {
   const dogs = [];
+  const dogColumns = [];
   for (const dog in data) {
     if (data[dog].length > 0) {
       data[dog].map((variation) => {
@@ -14,6 +15,12 @@ const sortDogs = (data) => {
     return 0.5 - Math.random();
   });
 
-  return randomDogs;
+  for (let i = 0; i < numberOfColumns; i++) {
+    dogColumns.push(randomDogs.splice(0, 10));
+  }
+
+  console.log(dogColumns);
+
+  return dogColumns;
 };
-export default sortDogs;
+export default selectDogs;

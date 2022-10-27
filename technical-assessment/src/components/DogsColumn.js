@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-const DogsTable = () => {
+const DogsColumn = () => {
   const allDogs = useSelector((state) => state.dogs.value);
 
   return (
@@ -20,4 +20,4 @@ const DogsTable = () => {
   );
 };
 
-export default DogsTable;
+export default DogsColumn;
