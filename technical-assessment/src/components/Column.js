@@ -5,7 +5,10 @@ import { Droppable } from "react-beautiful-dnd";
 const Column = ({ dogs, column }) => {
   return (
     <div className="table">
-      <h1>Table Header</h1>
+      <header className="header">
+        <h1>Rank</h1>
+        <h1>Table Header</h1>
+      </header>
       <Droppable droppableId={column.id}>
         {(provided) => {
           return (

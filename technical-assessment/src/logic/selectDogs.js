@@ -18,7 +18,11 @@ const selectDogs = (data, numberOfColumns) => {
   const selectedDogs = randomDogs.splice(0, 20);
 
   selectedDogs.map((dog, index) => {
-    dogData.dogs[`dog-${index + 1}`] = { id: `dog-${index + 1}`, name: dog };
+    const dogName = dog.replace(dog[0], dog[0].toUpperCase());
+    dogData.dogs[`dog-${index + 1}`] = {
+      id: `dog-${index + 1}`,
+      name: dogName,
+    };
     IDs.push(`dog-${index + 1}`);
   });
 

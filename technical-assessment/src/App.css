@@ -15,6 +15,8 @@
 }
 
 .dog {
+  display: flex;
+  justify-content: space-between;
   border: 2px solid black;
   width: 35vw;
   max-width: 500px;
