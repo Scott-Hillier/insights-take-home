@@ -56,7 +56,6 @@ const App = () => {
   if (dogData.dogs) {
     return (
       <div className="App">
-        <h1>Insights.GG Test</h1>
         <section className="tables">
           <DragDropContext onDragEnd={onDragEnd}>
             {dogData.columnOrder.map((columnId, index) => {

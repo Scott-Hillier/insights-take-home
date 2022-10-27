@@ -6,15 +6,17 @@ const Dog = ({ dog, index }) => {
     <Draggable draggableId={dog.id} index={index} key={dog.id} type="TASK">
       {(provided) => {
         return (
-          <section
-            className="dog"
+          <div
+            className="row"
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
           >
-            <div>Rank {index + 1}</div>
-            <div>{dog.name}</div>
-          </section>
+            <div className="rank">{index + 1}</div>
+            <div className="breed">{dog.name}</div>
+            {/* <td>{index + 1}</td>
+            <td>{dog.name}</td> */}
+          </div>
         );
       }}
     </Draggable>

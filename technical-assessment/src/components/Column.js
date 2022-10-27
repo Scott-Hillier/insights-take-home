@@ -4,16 +4,16 @@ import { Droppable } from "react-beautiful-dnd";
 
 const Column = ({ dogs, column }) => {
   return (
-    <div className="table">
-      <header className="header">
-        <h1>Rank</h1>
-        <h1>Table Header</h1>
-      </header>
+    <section className="table">
+      <div className="header">
+        <h2>Rank</h2>
+        <h2>Breed</h2>
+      </div>
       <Droppable droppableId={column.id}>
         {(provided) => {
           return (
             <div
-              className="dog-list"
+              className="body"
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
@@ -25,7 +25,7 @@ const Column = ({ dogs, column }) => {
           );
         }}
       </Droppable>
-    </div>
+    </section>
   );
 };
 
