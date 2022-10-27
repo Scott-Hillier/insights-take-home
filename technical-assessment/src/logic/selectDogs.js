@@ -22,8 +22,6 @@ const selectDogs = (data, numberOfColumns) => {
   //   }
   // }
 
-  console.log(dogColumns);
-
   return dogColumns;
 };
 export default selectDogs;

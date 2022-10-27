@@ -3,9 +3,9 @@ import DogsColumn from "./components/DogsColumn";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setDogColumns, getDogs } from "./features/dogs";
+import { setDogColumns } from "./features/dogs";
 import selectDogs from "./logic/selectDogs";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { DragDropContext } from "react-beautiful-dnd";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -18,18 +18,18 @@ const App = () => {
 
   const dogColumns = useSelector((state) => state.dogs.value);
 
+  const onDragEnd = (result) => {
+    // reorder column
+  };
+
   if (dogColumns) {
     return (
       <div className="App">
         <h1>Insights.GG Test</h1>
         <section className="tables">
-          <DragDropContext>
+          <DragDropContext onDragEnd={onDragEnd}>
             {dogColumns.map((column, index) => {
-              return (
-                <Droppable>
-                  <DogsColumn dogs={column} key={index} />;
-                </Droppable>
-              );
+              return <DogsColumn dogs={column} key={index} />;
             })}
           </DragDropContext>
         </section>
