@@ -1,11 +1,12 @@
 import "./App.css";
-import Column from "./components/Column";
 import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setDogData } from "./features/dogs";
-import selectDogs from "./logic/selectDogs";
 import { DragDropContext } from "react-beautiful-dnd";
+import selectDogs from "./logic/selectDogs";
+import Column from "./components/Column";
+import Download from "./components/Download";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -56,7 +57,7 @@ const App = () => {
   if (dogData.dogs) {
     return (
       <div className="App">
-        <h1>Insights.GG Assessment</h1>
+        <header className="app-header">Insights.GG Assessment</header>
         <section className="tables">
           <DragDropContext onDragEnd={onDragEnd}>
             {dogData.columnOrder.map((columnId, index) => {
@@ -68,6 +69,16 @@ const App = () => {
             })}
           </DragDropContext>
         </section>
+        <Download
+          id="download-button"
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            this.download();
+          }}
+        >
+          Download as JSON
+        </Download>
       </div>
     );
   }

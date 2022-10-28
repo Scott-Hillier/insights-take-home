@@ -14,8 +14,6 @@ const Dog = ({ dog, index }) => {
           >
             <div className="rank">{index + 1}</div>
             <div className="breed">{dog.name}</div>
-            {/* <td>{index + 1}</td>
-            <td>{dog.name}</td> */}
           </div>
         );
       }}
