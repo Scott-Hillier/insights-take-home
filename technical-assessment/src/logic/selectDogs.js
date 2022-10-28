@@ -24,7 +24,7 @@ const selectDogs = (data, numberOfColumns) => {
       name: dogName,
       rank: index + 1,
     };
-    IDs.push(`dog-${index + 1}`);
+    return IDs.push(`dog-${index + 1}`);
   });
 
   for (let i = 1; i <= numberOfColumns; i++) {
