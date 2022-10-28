@@ -21,7 +21,7 @@ const Download = () => {
   };
   return (
     <button
-      id="download"
+      id="download-button"
       onClick={() => {
         download();
       }}

@@ -69,16 +69,9 @@ const App = () => {
             })}
           </DragDropContext>
         </section>
-        <Download
-          id="download-button"
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            this.download();
-          }}
-        >
-          Download as JSON
-        </Download>
+        <section className="download">
+          <Download>Download as JSON</Download>
+        </section>
       </div>
     );
   }
