@@ -16,7 +16,7 @@ const dogJSON = (dogData) => {
   }
 
   for (let i = 0; i < dogData.columns["column-2"].dogIds.length; i++) {
-    dogJSON.dogBreeds.breed1Rank[`rank${i + 1}`] =
+    dogJSON.dogBreeds.breed2Rank[`rank${i + 1}`] =
       dogData.dogs[dogData.columns["column-2"].dogIds[i]].name;
   }
 
