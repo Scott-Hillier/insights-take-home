@@ -20,12 +20,11 @@ const App = () => {
   }, [dispatch]);
 
   const dogData = useSelector((state) => state.dogs.value);
-  const alertState = useSelector((state) => state.alert.value);
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
 
-    if (dogData.columns[source.droppableId].dogIds.length === 1) {
+    if (dogData.columns[source.droppableId].dogIds.length === 9) {
       console.log("hit");
       return dispatch(setAlertState({ alert: true }));
     }
@@ -109,7 +108,7 @@ const App = () => {
             })}
           </DragDropContext>
         </section>
-        <Alert alert={alertState.alert} />
+        <Alert />
         <section className="download">
           <Download>Download as JSON</Download>
         </section>
