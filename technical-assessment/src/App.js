@@ -9,6 +9,7 @@ import Column from "./components/Column";
 import Download from "./components/Download";
 import Alert from "./components/Alert";
 import { setAlertState } from "./features/alert";
+import { FaDog } from "react-icons/fa";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -95,7 +96,15 @@ const App = () => {
   if (dogData.dogs) {
     return (
       <div className="App">
-        <header className="app-header">Insights.GG Assessment</header>
+        <header
+          className="app-header"
+          onClick={() => {
+            window.location.reload();
+          }}
+        >
+          <FaDog id="logo" />
+          <h3 id="title">Dog Breed Ranking</h3>
+        </header>
         <section className="tables">
           <DragDropContext onDragEnd={onDragEnd}>
             {dogData.columnOrder.map((columnId, index) => {

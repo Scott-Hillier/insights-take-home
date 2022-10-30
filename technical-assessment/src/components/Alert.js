@@ -23,7 +23,7 @@ const Alert = () => {
           dispatch(handleToClose);
         }}
       >
-        <DialogTitle>Woof Invalid Action Woof</DialogTitle>
+        <DialogTitle>Woof! Invalid Action Woof!</DialogTitle>
         <DialogActions id="alert-close">
           <Button onClick={handleToClose} id="alert-close-button">
             Close

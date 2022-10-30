@@ -14,11 +14,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Times New Roman";
   font-size: calc(20px + 1vmin);
   height: 10vh;
   width: 100vw;
-  color: rgb(77, 77, 77);
+  color: rgb(55, 55, 55);
   background-color: rgba(59, 111, 69, 0.5);
+}
+.app-header:hover {
+  cursor: pointer;
+}
+
+#logo {
+  margin-right: 1vw;
 }
 
 .tables {
@@ -73,6 +81,7 @@
 .download {
   display: flex;
   justify-content: center;
+  margin-bottom: 5vh;
 }
 
 #download-button {
@@ -93,4 +102,5 @@
 
 #alert-close-button {
   border: 2px solid grey;
+  border-radius: 8px;
 }
