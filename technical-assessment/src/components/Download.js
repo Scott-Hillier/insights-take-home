@@ -26,7 +26,7 @@ const Download = () => {
         download();
       }}
     >
-      Download as JSON
+      Download
     </button>
   );
 };

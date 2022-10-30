@@ -118,8 +118,9 @@ const App = () => {
         </section>
         <Alert />
         <section className="download">
-          <Download>Download as JSON</Download>
+          <Download />
         </section>
+        <br />
       </div>
     );
   }
