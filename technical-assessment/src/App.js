@@ -7,6 +7,8 @@ import { DragDropContext } from "react-beautiful-dnd";
 import selectDogs from "./logic/selectDogs";
 import Column from "./components/Column";
 import Download from "./components/Download";
+import Alert from "./components/Alert";
+import { setAlertState } from "./features/alert";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -18,9 +20,15 @@ const App = () => {
   }, [dispatch]);
 
   const dogData = useSelector((state) => state.dogs.value);
+  const alertState = useSelector((state) => state.alert.value);
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
+
+    if (dogData.columns[source.droppableId].dogIds.length === 1) {
+      console.log("hit");
+      return dispatch(setAlertState({ alert: true }));
+    }
 
     if (!destination) {
       return;
@@ -33,25 +41,57 @@ const App = () => {
       return;
     }
 
-    const column = dogData.columns[source.droppableId];
-    const newDogIds = Array.from(column.dogIds);
-    newDogIds.splice(source.index, 1);
-    newDogIds.splice(destination.index, 0, draggableId);
+    const start = dogData.columns[source.droppableId];
+    const finish = dogData.columns[destination.droppableId];
 
-    const newColumn = {
-      ...column,
-      dogIds: newDogIds,
+    if (start === finish) {
+      const column = dogData.columns[source.droppableId];
+      const newDogIds = Array.from(column.dogIds);
+      newDogIds.splice(source.index, 1);
+      newDogIds.splice(destination.index, 0, draggableId);
+
+      const newColumn = {
+        ...column,
+        dogIds: newDogIds,
+      };
+
+      const newDogData = {
+        ...dogData,
+        columns: {
+          ...dogData.columns,
+          [newColumn.id]: newColumn,
+        },
+      };
+
+      dispatch(setDogData(newDogData));
+
+      return;
+    }
+
+    const startTaskIds = Array.from(start.dogIds);
+    startTaskIds.splice(source.index, 1);
+    const newStart = {
+      ...start,
+      dogIds: startTaskIds,
     };
 
-    const newDogData = {
+    const finishTaskIds = Array.from(finish.dogIds);
+    finishTaskIds.splice(destination.index, 0, draggableId);
+    const newFinish = {
+      ...finish,
+      dogIds: finishTaskIds,
+    };
+
+    const newState = {
       ...dogData,
       columns: {
         ...dogData.columns,
-        [newColumn.id]: newColumn,
+        [newStart.id]: newStart,
+        [newFinish.id]: newFinish,
       },
     };
 
-    dispatch(setDogData(newDogData));
+    dispatch(setDogData(newState));
   };
 
   if (dogData.dogs) {
@@ -69,6 +109,7 @@ const App = () => {
             })}
           </DragDropContext>
         </section>
+        <Alert alert={alertState.alert} />
         <section className="download">
           <Download>Download as JSON</Download>
         </section>

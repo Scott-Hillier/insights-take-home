@@ -6,10 +6,12 @@ import reportWebVitals from "./reportWebVitals";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import dogsReducer from "./features/dogs";
+import alertReducers from "./features/alert";
 
 const store = configureStore({
   reducer: {
     dogs: dogsReducer,
+    alert: alertReducers,
   },
 });
 
