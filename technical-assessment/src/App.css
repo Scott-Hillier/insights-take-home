@@ -85,3 +85,12 @@
   background-color: rgb(177, 177, 235);
   border: 3px solid rgb(117, 117, 163);
 }
+
+#alert-close {
+  display: flex;
+  justify-content: center;
+}
+
+#alert-close-button {
+  border: 2px solid grey;
+}

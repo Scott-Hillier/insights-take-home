@@ -24,8 +24,7 @@ const App = () => {
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
 
-    if (dogData.columns[source.droppableId].dogIds.length === 9) {
-      console.log("hit");
+    if (dogData.columns[source.droppableId].dogIds.length === 1) {
       return dispatch(setAlertState({ alert: true }));
     }
 
