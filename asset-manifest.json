@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/insights-take-home/static/css/main.5306b36a.css",
+    "main.js": "/insights-take-home/static/js/main.30f0078d.js",
+    "static/js/787.63f6970a.chunk.js": "/insights-take-home/static/js/787.63f6970a.chunk.js",
+    "static/media/background.jpeg": "/insights-take-home/static/media/background.197860cfa3227aab946d.jpeg",
+    "index.html": "/insights-take-home/index.html",
+    "main.5306b36a.css.map": "/insights-take-home/static/css/main.5306b36a.css.map",
+    "main.30f0078d.js.map": "/insights-take-home/static/js/main.30f0078d.js.map",
+    "787.63f6970a.chunk.js.map": "/insights-take-home/static/js/787.63f6970a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5306b36a.css",
+    "static/js/main.30f0078d.js"
+  ]
+}
