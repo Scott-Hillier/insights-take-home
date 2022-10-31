@@ -11,7 +11,7 @@
   font-family: sans-serif;
 }
 
-.app-header {
+#app-header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +21,13 @@
   color: rgb(55, 55, 55);
   background-color: rgba(59, 111, 69, 0.5);
 }
-.app-header:hover {
+
+#app-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#app-title:hover {
   cursor: pointer;
 }
 

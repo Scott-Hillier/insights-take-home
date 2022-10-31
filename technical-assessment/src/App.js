@@ -13,14 +13,13 @@ import { FaDog } from "react-icons/fa";
 
 const App = () => {
   const dispatch = useDispatch();
+  const dogData = useSelector((state) => state.dogs.value);
 
   useEffect(() => {
     axios.get("https://dog.ceo/api/breeds/list/all").then((response) => {
       dispatch(setDogData(selectDogs(response.data.message, 2)));
     });
   }, [dispatch]);
-
-  const dogData = useSelector((state) => state.dogs.value);
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
@@ -96,14 +95,16 @@ const App = () => {
   if (dogData.dogs) {
     return (
       <div className="App">
-        <header
-          className="app-header"
-          onClick={() => {
-            window.location.reload();
-          }}
-        >
-          <FaDog id="logo" />
-          <h3 id="title">Dog Breed Ranking</h3>
+        <header id="app-header">
+          <div
+            id="app-title"
+            onClick={() => {
+              window.location.reload();
+            }}
+          >
+            <FaDog id="logo" />
+            <h3 id="title">Dog Breed Ranking</h3>
+          </div>
         </header>
         <section className="tables">
           <DragDropContext onDragEnd={onDragEnd}>
