@@ -1,6 +1,6 @@
 import React from "react";
 import Dog from "./Dog";
-import { Droppable, Draggable } from "react-beautiful-dnd";
+import { Droppable } from "react-beautiful-dnd";
 
 const Column = ({ dogs, column }) => {
   return (
