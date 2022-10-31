@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setDogData } from "./features/dogs";
-import { DragDropContext } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import selectDogs from "./logic/selectDogs";
 import Column from "./components/Column";
 import Download from "./components/Download";
@@ -22,11 +22,7 @@ const App = () => {
   }, [dispatch]);
 
   const onDragEnd = (result) => {
-    const { destination, source, draggableId } = result;
-
-    if (dogData.columns[source.droppableId].dogIds.length === 1) {
-      return dispatch(setAlertState({ alert: true }));
-    }
+    const { destination, source, draggableId, type } = result;
 
     if (!destination) {
       return;
@@ -37,6 +33,23 @@ const App = () => {
       destination.index === source.index
     ) {
       return;
+    }
+
+    if (type === "column") {
+      const newColumnOrder = Array.from(dogData.columnOrder);
+      newColumnOrder.splice(source.index, 1);
+      newColumnOrder.splice(destination.index, 0, draggableId);
+
+      const newState = {
+        ...dogData,
+        columnOrder: newColumnOrder,
+      };
+      dispatch(setDogData(newState));
+      return;
+    }
+
+    if (dogData.columns[source.droppableId].dogIds.length === 1) {
+      return dispatch(setAlertState({ alert: true }));
     }
 
     const start = dogData.columns[source.droppableId];
@@ -106,17 +119,37 @@ const App = () => {
             <h3 id="title">Dog Breed Ranking</h3>
           </div>
         </header>
-        <section className="tables">
-          <DragDropContext onDragEnd={onDragEnd}>
-            {dogData.columnOrder.map((columnId, index) => {
-              const column = dogData.columns[columnId];
-              const dogs = column.dogIds.map((dogId) => {
-                return dogData.dogs[dogId];
-              });
-              return <Column dogs={dogs} column={column} key={column.id} />;
-            })}
-          </DragDropContext>
-        </section>
+        <DragDropContext onDragEnd={onDragEnd}>
+          <Droppable
+            droppableId="all-columns"
+            direction="horizontal"
+            type="column"
+          >
+            {(provided) => (
+              <section
+                className="tables"
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {dogData.columnOrder.map((columnId, index) => {
+                  const column = dogData.columns[columnId];
+                  const dogs = column.dogIds.map((dogId) => {
+                    return dogData.dogs[dogId];
+                  });
+                  return (
+                    <Column
+                      dogs={dogs}
+                      column={column}
+                      key={column.id}
+                      index={index}
+                    />
+                  );
+                })}
+              </section>
+            )}
+          </Droppable>
+        </DragDropContext>
+
         <Alert />
         <section className="download">
           <Download />
