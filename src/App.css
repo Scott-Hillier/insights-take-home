@@ -46,8 +46,8 @@
   max-width: 400px;
   min-width: 280px;
   height: 100%;
-  margin: 4vw;
-  font-size: calc(13px + 1vmin);
+  margin: 3vw;
+  font-size: calc(15px + 0.75vmin);
   border: 2px solid black;
   border-radius: 10px;
 }
@@ -83,10 +83,12 @@
 
 .rank {
   width: 7.5vw;
+  min-width: 50px;
 }
 
 .breed {
   width: 23vw;
+  min-width: 150px;
 }
 
 .download {
