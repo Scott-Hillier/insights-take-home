@@ -37,16 +37,15 @@
 
 .tables {
   display: flex;
-  /* justify-content: center; */
-  /* align: center; */
+  justify-content: center;
   flex-wrap: wrap;
-  border: 2px solid blue;
 }
 
 .table {
   width: 35vw;
   max-width: 400px;
   min-width: 280px;
+  height: 100%;
   margin: 4vw;
   font-size: calc(13px + 1vmin);
   border: 2px solid black;
