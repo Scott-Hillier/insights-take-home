@@ -3,7 +3,6 @@ import Dog from "./Dog";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 
 const Column = ({ dogs, column, index }) => {
-  console.log(column);
   return (
     <Draggable draggableId={column.id} index={index}>
       {(provided) => {

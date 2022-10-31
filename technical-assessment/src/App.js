@@ -149,7 +149,6 @@ const App = () => {
             )}
           </Droppable>
         </DragDropContext>
-
         <Alert />
         <section className="download">
           <Download />

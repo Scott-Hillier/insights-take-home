@@ -19,6 +19,7 @@
   height: 10vh;
   color: rgb(55, 55, 55);
   background-color: rgba(62, 92, 68, 0.7);
+  border-bottom: 1px solid grey;
 }
 
 #app-title {
@@ -36,8 +37,10 @@
 
 .tables {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  /* align: center; */
   flex-wrap: wrap;
+  border: 2px solid blue;
 }
 
 .table {
@@ -45,7 +48,6 @@
   max-width: 400px;
   min-width: 280px;
   margin: 4vw;
-  height: 100%;
   font-size: calc(13px + 1vmin);
   border: 2px solid black;
   border-radius: 10px;
