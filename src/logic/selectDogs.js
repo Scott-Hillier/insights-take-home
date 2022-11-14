@@ -37,4 +37,5 @@ const selectDogs = (data, numberOfColumns) => {
 
   return dogData;
 };
+
 export default selectDogs;

@@ -24,10 +24,6 @@ const App = () => {
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
 
-    if (dogData.columns[source.droppableId].dogIds.length === 1) {
-      return dispatch(setAlertState({ alert: true }));
-    }
-
     if (!destination) {
       return;
     }
@@ -88,6 +84,11 @@ const App = () => {
         [newFinish.id]: newFinish,
       },
     };
+
+    if (newState.columns[source.droppableId].dogIds.length === 0) {
+      return dispatch(setAlertState({ alert: true }));
+    }
+    console.log(newState);
 
     dispatch(setDogData(newState));
   };
